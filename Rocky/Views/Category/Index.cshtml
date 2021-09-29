@@ -10,7 +10,9 @@
             <h2 class="text-primary">Category List</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-action="Create" asp-controller="Category" class="btn btn-primary">Create New Category</a>
+            <a asp-action="Create" asp-controller="Category" class="btn btn-primary">
+               <i class="fas fa-plus"></i> Create New Category
+            </a>
         </div>
     </div>
 
@@ -36,7 +38,12 @@
                     <tr>
                         <td width="50%">@obj.Name</td>
                         <td width="50%">@obj.DisplayOrder</td>
-                        <td></td>
+                        <td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-action="Edit" asp-route-Id="@obj.Id" asp-controller="Category" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" asp-route-Id="@obj.Id" asp-controller="Category" class="btn btn-danger mr-2"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
                     </tr>
                 }
             </tbody>
