@@ -2,7 +2,7 @@
 
 namespace Rocky.Migrations
 {
-    public partial class addCategoryTableToDatabase : Migration
+    public partial class AddCategoryTableToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
