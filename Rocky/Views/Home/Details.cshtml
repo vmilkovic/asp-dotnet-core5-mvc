@@ -1,4 +1,5 @@
-﻿@model Rocky.Models.ViewModels.DetailsViewModel
+﻿@model RockyModels.ViewModels.DetailsViewModel
+@using RockyUtility
 
 @{
     ViewData["Title"] = "Product Details";
@@ -26,11 +27,28 @@
                             <div class="col-12 col-lg-8">
                                 <div class="row pl-3">
                                     <div class="col-12">
-                                        <span class="badge p-3 border" style="background-color:lavenderblush">@Model.Product.Category.Name</span>
-                                        <span class="badge p-3 border" style="background-color:azure">@Model.Product.ApplicationType.Name</span>
+                                        <span class="badge p-3 border text-dark" style="background-color:lavenderblush">@Model.Product.Category.Name</span>
+                                        <span class="badge p-3 border text-dark" style="background-color:azure">@Model.Product.ApplicationType.Name</span>
                                         <h3 class="text-success"></h3>
                                         <p class="text-secondary">@Html.Raw(Model.Product.Description)</p>
                                     </div>
+                                    @if (User.IsInRole(WC.AdminRole))
+                                    {
+                                        <div class="col-12">
+                                            SqFt:
+                                        </div>
+                                        <div class="col-12">
+                                            @if (Model.ExistsInCart)
+                                            {
+                                                <input asp-for="@Model.Product.TempSqFt" disabled class="form-control" />
+                                            }
+                                            else
+                                            {
+                                                <input asp-for="@Model.Product.TempSqFt" class="form-control" />
+                                            }
+                                            <span asp-validation-for="@Model.Product.TempSqFt" class="text-danger"></span>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
